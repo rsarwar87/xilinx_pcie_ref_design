@@ -309,13 +309,13 @@ static ssize_t char_sgdma_read(struct file *file, char __user *buf,
 
 	engine = xcdev->engine;
 
-	if (engine->streaming && engine->dir == DMA_FROM_DEVICE) {
-		rv = xdma_cyclic_transfer_setup(engine);
-		if (rv < 0 && rv != -EBUSY)
-			return rv;
+	//if (engine->streaming && engine->dir == DMA_FROM_DEVICE) {
+	//	rv = xdma_cyclic_transfer_setup(engine);
+	//	if (rv < 0 && rv != -EBUSY)
+	//		return rv;
 		/* 600 sec. timeout */
-		return xdma_engine_read_cyclic(engine, buf, count, 600000);
-	}
+	//	return xdma_engine_read_cyclic(engine, buf, count, 600000);
+	//}
 
         return char_sgdma_read_write(file, (char *)buf, count, pos, 0);
 }
